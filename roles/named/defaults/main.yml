@@ -1,7 +1,0 @@
----
-named_if: "{{ master_ip }}"
-allow_range: "{{ master_ip }}; {{ client_ip }};"
-ns_name: "{{ master_host }}"
-ns_addr: "{{ master_ip }}"
-cl_name: "{{ client_host }}"
-cl_addr: "{{ client_ip }}"
