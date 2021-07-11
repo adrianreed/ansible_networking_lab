@@ -1,0 +1,31 @@
+---
+- name: Deploy user config to allow passwordless SSH
+  hosts: all
+  remote_user: root
+  roles:
+    - access
+  tags: access
+
+- name: Deploy baseline OS configuration
+  hosts: all
+  remote_user: "{{ os_user }}"
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - base
+  tags: base
+
+- name: Deploy Linux laboratory services
+  hosts: master
+  gather_facts: yes
+  remote_user: "{{ os_user }}"
+  become: yes
+  become_method: sudo
+  become_user: root
+  force_handlers: True
+  roles:
+    - named
+    - dhcpd
+    - vsftpd
+  tags: lab

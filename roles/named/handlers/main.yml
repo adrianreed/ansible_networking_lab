@@ -1,0 +1,13 @@
+---
+- name: Start named service
+  service:
+    name: named
+    state: started
+- name: Enable named service
+  service: 
+    name: named
+    enabled: yes
+- name: Restart named service
+  service:
+    name: named
+    state: restarted

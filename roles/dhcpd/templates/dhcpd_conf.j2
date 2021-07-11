@@ -1,0 +1,16 @@
+authoritative;
+default-lease-time {{ def_lease_time }};
+max-lease-time {{ max_lease_time }};
+
+subnet {{ network_id }} netmask {{ network_mask }} {
+      option subnet-mask	{{ network_mask }};
+      option domain-search	"{{ ns_zone }}";
+      range   {{ dhcp_iprange_start }}   {{ dhcp_iprange_end }};
+}
+
+{% for host in static_hosts %}
+host {{ host['name'] }}{
+  hardware ethernet {{ host.mac }};
+  fixed-address {{ host.ip }};
+}
+{% endfor %}
