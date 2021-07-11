@@ -1,0 +1,15 @@
+---
+- name: Start vsftpd service
+  service:
+    name: vsftpd
+    state: started
+
+- name: Enable vsftpd service
+  service: 
+    name: vsftpd
+    enabled: yes
+
+- name: Restart vsftpd service
+  service:
+    name: vsftpd
+    state: restarted

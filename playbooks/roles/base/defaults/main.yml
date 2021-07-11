@@ -1,0 +1,9 @@
+---
+packages:
+  - vim
+  - tree
+  - tcpdump
+  - bind-utils
+  - nc
+  - ftp
+  - git

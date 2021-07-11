@@ -1,0 +1,25 @@
+---
+- name: Ensure wheel group exists
+  group:
+    name: wheel
+    state: present
+
+- name: Allow passwordless sudo for wheel
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+
+- name: Create standard user and append to wheel
+  user:
+    name: "{{ os_user }}"
+    shell: /bin/bash
+    groups: wheel
+    append: yes
+
+- name: Grant SSH key access
+  authorized_key:
+    user: "{{ os_user }}"
+    key: "{{ lookup('file', '/home/' + lookup('env', 'USER') + '/.ssh/id_rsa.pub') }}"

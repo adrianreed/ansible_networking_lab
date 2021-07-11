@@ -1,0 +1,11 @@
+---
+- name: Deploy baseline OS configuration
+  hosts: all
+  gather_facts: no
+  remote_user: "{{ os_user }}"
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - base
+  tags: base

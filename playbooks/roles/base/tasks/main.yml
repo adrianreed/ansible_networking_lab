@@ -1,0 +1,11 @@
+---
+#To Do: Replace manually configuring resolv.conf for configuring the network interface
+- name: Configure resolv.conf
+  template:
+    src: 'resolv_conf.j2'
+    dest: /etc/resolv.conf
+
+- name: Install common and utility packages used for the laboratory
+  yum:
+    name: "{{ packages }}"
+    state: present

@@ -1,0 +1,8 @@
+---
+- name: Deploy user config to allow passwordless SSH
+  hosts: all
+  gather_facts: no
+  remote_user: root
+  roles:
+    - access
+  tags: access

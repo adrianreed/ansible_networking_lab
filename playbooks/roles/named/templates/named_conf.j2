@@ -1,0 +1,42 @@
+options {
+	listen-on port {{ ns_listen_port }} { 127.0.0.1; {{ named_if }}; };
+	directory 	"/var/named";
+	dump-file 	"/var/named/data/cache_dump.db";
+	statistics-file "/var/named/data/named_stats.txt";
+	memstatistics-file "/var/named/data/named_mem_stats.txt";
+	recursing-file  "/var/named/data/named.recursing";
+	secroots-file   "/var/named/data/named.secroots";
+	allow-query     { localhost; {{ allow_range }} };
+
+	recursion {{ recursion }};
+
+	dnssec-enable yes;
+	dnssec-validation yes;
+
+	bindkeys-file "/etc/named.root.key";
+
+	managed-keys-directory "/var/named/dynamic";
+
+	pid-file "/run/named/named.pid";
+	session-keyfile "/run/named/session.key";
+};
+
+logging {
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+
+zone "." IN {
+	type hint;
+	file "named.ca";
+};
+
+zone "{{ ns_zone }}" IN {
+            type master;
+            file "/var/named/db.{{ ns_zone }}";
+};
+
+include "/etc/named.rfc1912.zones";
+include "/etc/named.root.key";

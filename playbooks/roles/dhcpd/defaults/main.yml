@@ -1,0 +1,12 @@
+---
+def_lease_time: 3600
+max_lease_time: 7200
+static_hosts:
+  - master:
+    name: "{{ master_host }}"
+    mac: "{{ master_mac }}"
+    ip: "{{ master_ip }}"
+  - client:
+    name: "{{ client_host }}"
+    mac: "{{ client_mac }}"
+    ip: "{{ client_ip }}"
