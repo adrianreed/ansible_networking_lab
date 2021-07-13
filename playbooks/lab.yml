@@ -1,0 +1,14 @@
+---
+- name: Deploy Linux laboratory services
+  hosts: master
+  gather_facts: yes
+  remote_user: "{{ os_user }}"
+  become: yes
+  become_method: sudo
+  become_user: root
+  force_handlers: True
+  roles:
+    - named
+    - dhcpd
+    - vsftpd
+  tags: lab

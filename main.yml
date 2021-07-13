@@ -1,0 +1,4 @@
+---
+- import_playbook: playbooks/access.yml
+- import_playbook: playbooks/base.yml
+- import_playbook: playbooks/lab.yml
