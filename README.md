@@ -10,8 +10,9 @@ Usage:
 1) Provision two centOS hosts.
 2) Use the provided hosts.example file to build your '/etc/ansible/hosts' file.
 3) Copy the provided group_vars/all file to '/etc/ansible/hosts/group_vars/all' and fill with the parameters you want for your environment.
-4) Run the following ansible commands to build the laboratory
-
-# ansible-playbook deploy.yml --tags access -k # This is the only time you'll be required to use a password
+4) Run the following ansible commands to build the laboratory:
+```
+# ansible-playbook deploy.yml --tags access -k
 # ansible-playbook deploy.yml --tags base
 # ansible-playbook deploy.yml --tags lab
+```
