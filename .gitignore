@@ -1,0 +1,15 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# macOS
+.DS_Store
+
+# Python venv
+/EGG-INFO
+/bin
+/lib
+/pyvenv.cfg
+/venv
