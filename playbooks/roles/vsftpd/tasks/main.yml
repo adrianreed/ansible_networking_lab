@@ -1,41 +1,14 @@
 ---
 # To Do:
 # Use Valut to configure vsftpd to use password and local user instead of anonymous login.
-- name: Install FTP server
-  yum:
-    name: vsftpd
-    state: present
-  notify:
-    - Start vsftpd
-    - Enable vsftpd
-  tags: vsftpd_inst
+- name: Import vsftpd installation tasks
+  import_tasks: vsftpd_install.yml
 
-- name: Create a directory if it does not exist
-  file:
-    path: "{{ ftp_directory }}"
-    state: directory
-    mode: '0755'
-  tags: vsftpd_conf
+- name: Import vsftpd configuration tasks
+  import_tasks: vsftpd_install.yml
 
-- name: Configure FTP server
-  template:
-    src: 'vsftpd_conf.j2'
-    dest: /etc/vsftpd/vsftpd.conf
-  notify: Restart vsftpd
-  tags: vsftpd_conf
+- name: Import vsftpd configuration tasks
+  import_tasks: vsftpd_config.yml
 
-- name: Configure firewall
-  firewalld:
-    zone: public
-    service: ftp
-    permanent: yes
-    immediate: yes
-    state: enabled
-  tags: vsftpd_conf
-
-- name: Allow FTP SELinux boolean
-  seboolean:
-    name: ftpd_full_access
-    state: yes
-    persistent: yes
-  tags: vsftpd_conf
+- name: Import vsftpd OS configuration tasks
+  import_tasks: vsftpd_os.yml

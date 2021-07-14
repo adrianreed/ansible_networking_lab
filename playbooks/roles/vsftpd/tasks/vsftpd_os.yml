@@ -1,0 +1,16 @@
+---
+- name: Configure firewall
+  firewalld:
+    zone: public
+    service: ftp
+    permanent: yes
+    immediate: yes
+    state: enabled
+  tags: vsftpd_conf
+
+- name: Allow FTP SELinux boolean
+  seboolean:
+    name: ftpd_full_access
+    state: yes
+    persistent: yes
+  tags: vsftpd_conf

@@ -1,0 +1,9 @@
+---
+- name: Install DHCP server
+  yum:
+    name: dhcp
+    state: present
+  notify:
+    - Start dhcpd
+    - Enable dhcpd
+  tags: dhcpd_inst

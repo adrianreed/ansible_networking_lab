@@ -1,0 +1,9 @@
+---
+- name: Install DNS server
+  yum:
+    name: bind
+    state: present
+  notify:
+    - Start named
+    - Enable named
+  tags: named_inst

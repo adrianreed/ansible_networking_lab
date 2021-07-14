@@ -1,0 +1,9 @@
+---
+- name: Install FTP server
+  yum:
+    name: vsftpd
+    state: present
+  notify:
+    - Start vsftpd
+    - Enable vsftpd
+  tags: vsftpd_inst

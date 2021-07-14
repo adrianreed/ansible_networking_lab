@@ -1,0 +1,16 @@
+---
+- name: Force gather facts
+  setup:
+  delegate_to: "{{ item }}"
+  delegate_facts: true
+  loop: "{{ groups['all'] }}"
+  when: hostvars[item]['ansible_hostname'] is not defined
+  tags: dhcpd_conf
+
+- name: Configure DHCP server
+  template:
+    src: 'dhcpd_conf.j2'
+    dest: /etc/dhcp/dhcpd.conf
+  notify: Restart dhcpd
+  tags: dhcpd_conf
+

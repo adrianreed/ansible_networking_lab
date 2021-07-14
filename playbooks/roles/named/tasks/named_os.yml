@@ -1,0 +1,9 @@
+---
+- name: Configure firewall
+  firewalld:
+    zone: public
+    service: dns
+    permanent: yes
+    immediate: yes
+    state: enabled
+  tags: named_conf

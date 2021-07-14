@@ -1,6 +1,7 @@
 # Edit DHCP configuration parameters
 dhcp_iprange_start: 192.168.0.100
 dhcp_iprange_end: 192.168.0.199
+
 # Edit DNS configuration parameters
 ns_zone: myzone.com
 ns_listen_port: 53

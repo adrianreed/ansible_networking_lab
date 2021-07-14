@@ -1,26 +1,6 @@
 ---
-- name: Force gather facts
-  setup:
-  delegate_to: "{{ item }}"
-  delegate_facts: true
-  loop: "{{ groups['all'] }}"
-  when: hostvars[item]['ansible_hostname'] is not defined
-  tags:
-    - dhcpd_inst
-    - dhcpd_conf
+- name: Import dhcpd installation tasks
+  import_tasks: dhcpd_install.yml
 
-- name: Install DHCP server
-  yum:
-    name: dhcp
-    state: present
-  notify:
-    - Start dhcpd
-    - Enable dhcpd
-  tags: dhcpd_inst
-
-- name: Configure DHCP server
-  template:
-    src: 'dhcpd_conf.j2'
-    dest: /etc/dhcp/dhcpd.conf 
-  notify: Restart dhcpd
-  tags: dhcpd_conf
+- name: Import dhcpd configuration tasks
+  import_tasks: dhcpd_config.yml

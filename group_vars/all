@@ -1,9 +1,15 @@
----
-# Fill the following variables:
+# OS user that ansible will use
 os_user: myuser
-master_host: master01
-client_host: client01
-dns_resolvers:
+
+# Search domain (likely the same as the ns zone you will create)
+os_search_domain: myzone.com
+
+# Public resolvers in case you go for an authoritative only nameserver
+os_resolvers:
   - 8.8.8.8
   - 1.1.1.1
+
+# Hostnames in your environment
+master_host: master01
+client_host: client01
 
