@@ -14,13 +14,13 @@
     name: dhcp
     state: present
   notify:
-    - Start dhcpd service
-    - Enable dhcpd service
+    - Start dhcpd
+    - Enable dhcpd
   tags: dhcpd_inst
 
 - name: Configure DHCP server
   template:
     src: 'dhcpd_conf.j2'
     dest: /etc/dhcp/dhcpd.conf 
-  notify: Restart dhcpd service
+  notify: Restart dhcpd
   tags: dhcpd_conf

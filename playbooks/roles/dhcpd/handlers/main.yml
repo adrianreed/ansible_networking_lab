@@ -1,13 +1,13 @@
 ---
-- name: Start dhcpd service
+- name: Start dhcpd
   service:
     name: dhcpd
     state: started
-- name: Enable dhcpd service
+- name: Enable dhcpd
   service: 
     name: dhcpd
     enabled: yes
-- name: Restart dhcpd service
+- name: Restart dhcpd
   service:
     name: dhcpd
     state: restarted

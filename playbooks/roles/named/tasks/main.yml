@@ -14,22 +14,22 @@
     name: bind
     state: present
   notify:
-    - Start named service
-    - Enable named service
+    - Start named
+    - Enable named
   tags: named_inst
 
 - name: Configure DNS server
   template:
     src: 'named_conf.j2'
     dest: /etc/named.conf
-  notify: Restart named service
+  notify: Restart named
   tags: named_conf
 
 - name: Configure DNS zone
   template:
     src: 'zone_file.j2'
     dest: /var/named/db.{{ ns_zone }}
-  notify: Restart named service
+  notify: Restart named
   tags: named_conf
 
 - name: Configure firewall

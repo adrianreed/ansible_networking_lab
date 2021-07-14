@@ -6,8 +6,8 @@
     name: vsftpd
     state: present
   notify:
-    - Start vsftpd service
-    - Enable vsftpd service
+    - Start vsftpd
+    - Enable vsftpd
   tags: vsftpd_inst
 
 - name: Create a directory if it does not exist
@@ -21,7 +21,7 @@
   template:
     src: 'vsftpd_conf.j2'
     dest: /etc/vsftpd/vsftpd.conf
-  notify: Restart vsftpd service
+  notify: Restart vsftpd
   tags: vsftpd_conf
 
 - name: Configure firewall

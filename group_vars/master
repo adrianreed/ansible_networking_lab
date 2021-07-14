@@ -1,0 +1,16 @@
+# Edit DHCP configuration parameters
+dhcp_iprange_start: 192.168.0.100
+dhcp_iprange_end: 192.168.0.199
+# Edit DNS configuration parameters
+ns_zone: myzone.com
+ns_listen_port: 53
+ns_serial: 2021010100
+recursion: 'no'
+
+# Ignore
+master_ip: "{{ hostvars[master_host]['ansible_facts']['default_ipv4']['address'] }}"
+master_mac: "{{ hostvars[master_host]['ansible_facts']['default_ipv4']['macaddress'] }}"
+network_id: "{{ hostvars[master_host]['ansible_facts']['default_ipv4']['network'] }}"
+network_mask: "{{ hostvars[master_host]['ansible_facts']['default_ipv4']['netmask'] }}"
+client_ip: "{{ hostvars[client_host]['ansible_facts']['default_ipv4']['address'] }}"
+client_mac: "{{ hostvars[client_host]['ansible_facts']['default_ipv4']['macaddress'] }}"

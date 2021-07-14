@@ -9,10 +9,10 @@ This playbook deploys a simple test environment to be used as a networking and l
 ###### Usage
 - Provision two centOS hosts.
 - Use the provided hosts.example file to build your '/etc/ansible/hosts' file.
-- Copy the provided group_vars/all file to '/etc/ansible/hosts/group_vars/all' and fill with the parameters you want for your environment.
+- Copy the provided group_vars files to '/etc/ansible/hosts/group_vars/' and edit with the parameters you want for your environment.
 - Run the following ansible commands to build the laboratory:
 ```
-# ansible-playbook deploy.yml --tags access -k
-# ansible-playbook deploy.yml --tags base
-# ansible-playbook deploy.yml --tags lab
+# ansible-playbook main.yml --tags access -k
+# ansible-playbook main.yml --tags base
+# ansible-playbook main.yml --tags lab
 ```
