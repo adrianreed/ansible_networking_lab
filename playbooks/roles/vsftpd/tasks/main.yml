@@ -5,9 +5,6 @@
   import_tasks: vsftpd_install.yml
 
 - name: Import vsftpd configuration tasks
-  import_tasks: vsftpd_install.yml
-
-- name: Import vsftpd configuration tasks
   import_tasks: vsftpd_config.yml
 
 - name: Import vsftpd OS configuration tasks
