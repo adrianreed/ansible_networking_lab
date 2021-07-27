@@ -3,7 +3,7 @@ dhcp_iprange_start: 192.168.0.100
 dhcp_iprange_end: 192.168.0.199
 
 # Edit DNS configuration parameters
-ns_zone: {{ os_search_domain }}
+ns_zone: "{{ os_search_domain }}"
 ns_listen_port: 53
 ns_serial: 2021010100
 recursion: 'no'
